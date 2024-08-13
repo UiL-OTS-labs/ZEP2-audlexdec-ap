@@ -1,0 +1,90 @@
+/******************************************************************************\
+FILE:           audlexdec_ap.zp
+EXPERIMENT:     Auditory Lexical Decision with Auditory Priming
+AUTHOR:         Theo Veenker <theo.veenker@beexy.nl>
+ADAPTED BY:     -
+
+
+Global structure of experiment:
+
+  - welcome
+
+  - phase 1 (see subfolder test)
+
+  - thankyou
+
+
+HISTORY:
+2013-07-03 TV   Created.
+2017-01-09 TV   Adapted for Zep 2.0.
+
+\******************************************************************************/
+
+requires 2.6;
+
+import std_windows1;
+import std_texts_en;
+import std_entry_page1;
+import std_exit_page1;
+import std_pause_page;
+import std_blank_page;
+//import io_beexybox;         // Enable to use BeexyBox response box.
+//import io_spp;              // Enable to use SPP based response box.
+
+import test::task;
+
+
+// Experiment version. In piloting stage and later increment this on each
+// relevant change.
+const int EXPERIMENT_VERSION = 1;
+
+
+Experiment experiment
+{
+    on_event:entry()
+    {
+        show_test_windows();
+    }
+
+
+    on_event:message()
+    {
+        // On Ctrl+F4 jump unconditionally to the thank-you part.
+        if (message_sender == control && message_arg == SYS_STOP)
+        {
+            control.mark_experiment_aborted();
+            thankyou.enter();
+        }
+    }
+
+
+    Part welcome
+    {
+        on_event:entry()
+        {
+            entry_page.set_text(WELCOME_TEXT);
+            entry_page.action(this, 0s);
+        }
+    }
+
+
+    Part phase1
+    {
+        on_event:entry()
+        {
+            test::action(this);
+        }
+    }
+
+
+    Part thankyou
+    {
+        on_event:entry()
+        {
+            control.end_experiment();   // Check-in session.
+
+            exit_page.set_text(THANK_YOU_TEXT);
+            exit_page.action(this, 10s);
+        }
+    }
+}

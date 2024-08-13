@@ -1,0 +1,60 @@
+/******************************************************************************\
+FILE:           stimuli.zm
+AUTHOR:         Theo Veenker <theo.veenker@beexy.nl>
+ADAPTED BY:     -
+
+DESCRIPTION:
+
+Defines the formats of item table(s) and provides the actual content of
+the item table(s) i.e. stimulus information.
+
+
+HISTORY:
+2011-10-25 TV   Created.
+2017-01-09 TV   Adapted for Zep 2.0.
+
+\******************************************************************************/
+
+
+// Symbolic definition of item type.
+enum ItemType
+{
+    NON_WORD,                   // non-word
+    UNRELATED,                  // real word with unrelated prime
+    RELATED,                    // real word with semantically related prime
+}
+
+
+// Item table record.
+record TestItem
+{
+    int         id;             // item id
+    ItemType    type;           // item type
+    string      wordfn;         // stimulus word sound filename
+    string      primefn;        // prime word sound filename
+}
+
+
+// Practice item table.
+//   index: item number
+TestItem[] prac_items =
+{
+    {1,         NON_WORD,       "palve.wav",    "onion.wav"},
+    {2,         UNRELATED,      "hot.wav",      "stapler.wav"},
+}
+
+
+// Test item table.
+//   index: item number
+TestItem[] test_items =
+{
+    {1,         NON_WORD,       "slirque.wav",  "eyes.wav"},
+    {2,         NON_WORD,       "crawse.wav",   "piano.wav"},
+    {3,         NON_WORD,       "thwurp.wav",   "rabbit.wav"},
+    {4,         NON_WORD,       "clem.wav",     "flower.wav"},
+
+    {5,         RELATED,        "white.wav",    "snow.wav"},
+    {6,         RELATED,        "travel.wav",   "suitcase.wav"},
+    {7,         UNRELATED,      "letter.wav",   "garden.wav"},
+    {8,         UNRELATED,      "clown.wav",    "forest.wav"},
+}

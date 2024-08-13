@@ -1,0 +1,74 @@
+/******************************************************************************\
+FILE:           output.zm
+AUTHOR:         Theo Veenker <theo.veenker@beexy.nl>
+ADAPTED BY:     -
+
+DESCRIPTION:
+
+Defines the formats of output table(s).
+
+
+HISTORY:
+2011-10-25 TV   Created.
+2017-01-09 TV   Adapted for Zep 2.0.
+
+\******************************************************************************/
+
+
+// Test output table record. If you change this then also update
+// corresponding output function below and rerun the experiment (once)
+// in PREPARING mode, or alternatively manually make the required changes
+// to the table column definitions using ZepMan.
+record TestOutput
+{
+    int         trialnum;       // trial number
+
+    int         id;             // item id
+    ItemType    type;           // item type
+    string      wordfn;         // stimulus word sound filename
+    string      primefn;        // prime word sound filename
+
+    int         value;          // response value: 0=no, 1=yes, -1=timeout
+    int         rt;             // response time [ms]
+    int         correct;        // correct response: 0=no, 1=yes, -1=n.a.
+}
+
+
+//------------------------------------------------------------------------------
+
+
+// Appends one row of data to test output table.
+void test_output_append(TestOutput data)
+{
+    // Create new trial data record. The title (final argument) is optional
+    // but recommended.
+    expdb.add_trial_data_record(namespace_name, "1",
+        "Test results");
+
+    // Set column values of the trial data record. The descriptions (final
+    // arguments) are optional but recommended.
+
+    expdb.set_trial_data_int_field("trialnum", data.trialnum,
+        "trial number");
+
+    expdb.set_trial_data_int_field("id", data.id,
+        "item id");
+
+    expdb.set_trial_data_enum_field("type", string(data.type),
+        "item type");
+
+    expdb.set_trial_data_string_field("wordfn", data.wordfn,
+        "stimulus word sound filename");
+
+    expdb.set_trial_data_string_field("primefn", data.primefn,
+        "prime word sound filename");
+
+    expdb.set_trial_data_int_field("value", data.value,
+        "response value: 0=no, 1=yes, -1=timeout");
+
+    expdb.set_trial_data_int_field("rt", data.rt,
+        "response time [ms]");
+
+    expdb.set_trial_data_int_field("correct", data.correct,
+        "correct response: 0=no, 1=yes, -1=n.a.");
+}
