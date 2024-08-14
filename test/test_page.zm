@@ -195,8 +195,8 @@ Page test_page
                 value = val;
                 rt = int(reaction_time(0));
                 correct =
-                    (item.type != NON_WORD && val == RESPONSE_YES) ||
-                    (item.type == NON_WORD && val == RESPONSE_NO);
+                    (item.is_word && val == RESPONSE_YES) ||
+                    (!item.is_word && val == RESPONSE_NO);
 
                 ignore_remaining_hits();
 

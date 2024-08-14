@@ -28,10 +28,10 @@ import std_entry_page1;
 import std_exit_page1;
 import std_pause_page;
 import std_blank_page;
-//import io_beexybox;         // Enable to use BeexyBox response box.
-//import io_spp;              // Enable to use SPP based response box.
+import io_beexybox;         // Enable to use BeexyBox response box.
 
 import test::task;
+import test::stimuli;
 
 
 // Experiment version. In piloting stage and later increment this on each
@@ -44,6 +44,9 @@ Experiment experiment
     on_event:entry()
     {
         show_test_windows();
+        if (test::load_stimuli() != OK) {
+            terminate "unable to load stimuli";
+        }
     }
 
 

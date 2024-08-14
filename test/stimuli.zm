@@ -19,9 +19,9 @@ HISTORY:
 // Symbolic definition of item type.
 enum ItemType
 {
-    NON_WORD,                   // non-word
-    UNRELATED,                  // real word with unrelated prime
-    RELATED,                    // real word with semantically related prime
+    COGNATE,
+    NON_COGNATE,
+    PSEUDO_WORD,
 }
 
 
@@ -32,29 +32,38 @@ record TestItem
     ItemType    type;           // item type
     string      wordfn;         // stimulus word sound filename
     string      primefn;        // prime word sound filename
+    bool        is_word;        // whether or not wordfn is a word
 }
 
 
 // Practice item table.
-//   index: item number
-TestItem[] prac_items =
-{
-    {1,         NON_WORD,       "palve.wav",    "onion.wav"},
-    {2,         UNRELATED,      "hot.wav",      "stapler.wav"},
-}
+TestItem[] prac_items = {};
 
 
 // Test item table.
-//   index: item number
-TestItem[] test_items =
-{
-    {1,         NON_WORD,       "slirque.wav",  "eyes.wav"},
-    {2,         NON_WORD,       "crawse.wav",   "piano.wav"},
-    {3,         NON_WORD,       "thwurp.wav",   "rabbit.wav"},
-    {4,         NON_WORD,       "clem.wav",     "flower.wav"},
+TestItem[] test_items = {};
 
-    {5,         RELATED,        "white.wav",    "snow.wav"},
-    {6,         RELATED,        "travel.wav",   "suitcase.wav"},
-    {7,         UNRELATED,      "letter.wav",   "garden.wav"},
-    {8,         UNRELATED,      "clown.wav",    "forest.wav"},
+int load_stimuli() {
+    string fn;
+
+    if (selected_group == L1) {
+        fn = "list1.csv";
+    }
+    else if (selected_group == L2) {
+        fn = "list2.csv";
+    }
+    else if (selected_group == L3) {
+        fn = "list3.csv";
+    }
+    else if (selected_group == L4) {
+        fn = "list4.csv";
+    }
+    else {
+        print_error("Unexpected test group");
+        return ERROR;
+    }
+    
+    test_items.load(stimuli_dir() + fn, true, 1);
+    println("REMOVE: test_items.size == " + test_items.size);
+    return OK;
 }
