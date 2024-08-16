@@ -1,0 +1,15 @@
+
+const string INSTRUCTION =
+       M"<b>Dear participant,</b>\n"
+        "\n"
+        "Thank you for participating in this experiment.\n"
+        "\n"
+        "You are now going to hear words over the headphones, one "
+        "after the other. The words come in pairs. Your task is to "
+        "indicate, as quickly as possible, whether the you think "
+        "<i>the second word is a real Dutch word or not</i>. "
+        "Try to make no mistakes.\n"
+        "\n"
+        "To respond, hit the left button on the button-box for "
+        "<i>No</i> and the right button for <i>Yes</i>.\n";
+

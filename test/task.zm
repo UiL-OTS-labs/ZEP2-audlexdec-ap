@@ -30,6 +30,7 @@ HISTORY:
 //requires 2.6;
 
 import defs;
+import instructions;
 import stimuli;
 import shuffle;
 import output;
@@ -43,34 +44,7 @@ Block task
         on_event:entry()
         {
 //            pause_page.set_text_size(1000, 600);
-            pause_page.set_text(
-                "<b>Dear participant,</b>\n"
-                "\n"
-                "Thank you for participating in this experiment.\n"
-                "\n"
-                "You are now going to hear words over the headphones, one "
-                "after the other. The words come in pairs. Your task is to "
-                "indicate for each pair as quickly as possible whether you "
-                "think <i>both words are real words or not</i>. Try to make "
-                "no mistakes.\n"
-                "\n"
-
-                "To respond, hit the left button on the button-box for "
-                "<i>No</i> and the right button for <i>Yes</i>.\n"
-
-//                "To respond, hit the left shift key for <i>No</i> and the "
-//                "right shift key for <i>Yes</i>.\n"
-
-//                "To respond, hit the left button on the button-box for "
-//                "<i>No</i> and the right button for <i>Yes</i>. "
-//                "Alternatively you can use the left or right shift keys.\n"
-
-                "\n"
-                "First we will do a short practice.\n"
-                "\n"
-//                "<i>Hit Enter when ready to start.</i>",
-                "<i>Hit any button on the button-box when ready to start.</i>",
-                true);
+            pause_page.set_text(INSTRUCTION, true);
 
             pause_page.action(this);
             control.enable_all_buttons();
