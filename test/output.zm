@@ -27,6 +27,7 @@ record TestOutput
     ItemType    type;           // item type
     string      wordfn;         // stimulus word sound filename
     string      primefn;        // prime word sound filename
+    int         is_word;        // whether or not the target is lexical
 
     int         value;          // response value: 0=no, 1=yes, -1=timeout
     int         rt;             // response time [ms]
@@ -62,6 +63,9 @@ void test_output_append(TestOutput data)
 
     expdb.set_trial_data_string_field("primefn", data.primefn,
         "prime word sound filename");
+
+    expdb.set_trial_data_int_field("is_word", data.is_word,
+        "is a word or not 0 = no, 1 = yes.");
 
     expdb.set_trial_data_int_field("value", data.value,
         "response value: 0=no, 1=yes, -1=timeout");
