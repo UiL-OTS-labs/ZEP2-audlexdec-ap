@@ -22,6 +22,7 @@ enum ItemType
     COGNATE,
     NON_COGNATE,
     PSEUDO_WORD,
+    PRACTICE,
 }
 
 
@@ -63,7 +64,17 @@ int load_stimuli() {
         return ERROR;
     }
     
+    prac_items.load(stimuli_dir() + "prac_items.csv", true, 1);
     test_items.load(stimuli_dir() + fn, true, 1);
     println("REMOVE: test_items.size == " + test_items.size);
+    if (prac_items.size <= 0) {
+        print_error("Unable to load practice items.\n");
+        return ERROR;
+    }
+    if (test_items.size <= 0) {
+        print_error("Unable to load test items.\n");
+        return ERROR;
+    }
+
     return OK;
 }
