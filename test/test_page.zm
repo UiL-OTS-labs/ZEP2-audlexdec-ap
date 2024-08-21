@@ -194,9 +194,12 @@ Page test_page
             {
                 value = val;
                 rt = int(reaction_time(0));
-                correct =
-                    (item.is_word && val == RESPONSE_YES) ||
-                    (!item.is_word && val == RESPONSE_NO);
+                if (item.is_word) {
+                    correct = val == RESPONSE_YES;
+                }
+                else {
+                    correct = val == RESPONSE_NO;
+                }
 
                 ignore_remaining_hits();
 
