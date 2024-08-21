@@ -18,6 +18,7 @@ HISTORY:
 int shuffle_test_items()
 {
     test_items.shuffle(0, -1);
+    prac_items.shuffle(0, -1);
 
     return OK;
 }
