@@ -160,7 +160,7 @@ Block task
                 output.type = item.type;
                 output.wordfn = item.wordfn;
                 output.primefn = item.primefn;
-                output.is_word = items.is_word;
+                output.is_word = item.is_word;
 
                 output.value = test_page.response.value;
                 output.rt = test_page.response.rt;
