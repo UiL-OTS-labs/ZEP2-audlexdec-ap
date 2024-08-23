@@ -1,0 +1,27 @@
+/******************************************************************************\
+FILE:           grouping.zm
+AUTHOR:         Theo Veenker <theo.veenker@beexy.nl>
+ADAPTED BY:     -
+
+DESCRIPTION:
+
+Group record preparation:
+- definition of groups
+- assigning participant to group (omitted below)
+- initialization of fixed group record attributes (omitted below)
+- checking group record attributes (omitted below)
+
+See modules/user/grouping/?/grouping.zm for examples.
+
+\******************************************************************************/
+
+
+// Symbolic definition of groups. Empty means this experiment does not define
+// any groups.
+enum TestGroup
+{
+    L1,
+    L2,
+    L3,
+    L4
+}
