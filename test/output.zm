@@ -32,6 +32,9 @@ record TestOutput
     int         value;          // response value: 0=no, 1=yes, -1=timeout
     int         rt;             // response time [ms]
     int         correct;        // correct response: 0=no, 1=yes, -1=n.a.
+
+    int         noise;          // TODO
+    int         related;        // TODO
 }
 
 
@@ -75,4 +78,10 @@ void test_output_append(TestOutput data)
 
     expdb.set_trial_data_int_field("correct", data.correct,
         "correct response: 0=no, 1=yes, -1=n.a.");
+    
+    expdb.set_trial_data_int_field("noise", data.noise,
+        "noise present: 0=no, 1=yes");
+    
+    expdb.set_trial_data_int_field("related", data.related,
+        "related prime present: 0=no, 1=yes");
 }

@@ -165,6 +165,8 @@ Block task
                 output.value = test_page.response.value;
                 output.rt = test_page.response.rt;
                 output.correct = test_page.response.correct;
+                output.noise = item.noise;
+                output.related = item.related;
                 test_output_append(output);
             }
         }

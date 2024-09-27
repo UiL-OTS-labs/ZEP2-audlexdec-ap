@@ -1,8 +1,8 @@
-### practice ###
-id;type;wordfn;primefn;is_word
-193;PRACTICE;193_target_n.wav;193_prime.wav;true
-194;PRACTICE;194_target.wav;194_prime.wav;true
-195;PRACTICE;195_target_n.wav;195_prime.wav;true
-196;PRACTICE;196_target.wav;196_prime.wav;false
-197;PRACTICE;197_target.wav;197_prime.wav;false
-198;PRACTICE;198_target_n.wav;198_prime.wav;false
+### practice ###;;;;;;
+id;type;wordfn;primefn;is_word;noise;related
+193;PRACTICE;193_target_n.wav;193_prime.wav;true;1;0
+194;PRACTICE;194_target.wav;194_prime.wav;true;0;0
+195;PRACTICE;195_target_n.wav;195_prime.wav;true;1;0
+196;PRACTICE;196_target.wav;196_prime.wav;false;0;0
+197;PRACTICE;197_target.wav;197_prime.wav;false;0;0
+198;PRACTICE;198_target_n.wav;198_prime.wav;false;1;0
