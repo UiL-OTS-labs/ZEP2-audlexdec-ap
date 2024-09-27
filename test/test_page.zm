@@ -255,7 +255,7 @@ Page test_page
 
         // Show or hide prompt.
         test_page_overlay.show_prompt(pr ?
-            "are both words real words?" : "");
+            "Is the second word you hear a real Dutch word?" : "");
 
         // Enable or disable the progress bar.
         test_page_overlay.show_progress_bar(ntrials);   // disabled if < 0
